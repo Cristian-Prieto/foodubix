@@ -1,19 +1,35 @@
-.sectionContainer {
+.cardContainer {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  width: 100vw;
-  background-color: aqua;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
 }
 .card {
-  list-style: none;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  outline: 1px solid white;
 }
-.title {
-  width: 100%;
-}
+
 .img {
   object-fit: cover;
   width: 100%;
+}
+
+@media (min-width: 600px) {
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
 }

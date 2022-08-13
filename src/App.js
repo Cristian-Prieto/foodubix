@@ -1,9 +1,10 @@
 import { BrowserRouter, Link, Route, Routes, Outlet } from "react-router-dom";
 import "./App.css";
 import { Random } from "./pages/Random";
+import { RecipeDetail } from "./pages/RecipeDetail";
 // import { Login } from "./pages/Login";
 // import { Contact } from "./pages/Contact";
-import { Recipes } from "./pages/Recipes";
+import { Search } from "./pages/Search";
 
 function Home() {
   return (
@@ -16,8 +17,11 @@ function Home() {
         <Link to="/" style={{ display: "flex", textDecoration: "none" }}>
           Home
         </Link>
-        <Link to="recipes" style={{ display: "flex", textDecoration: "none" }}>
-          Recipes
+        <Link
+          to="recipes/search"
+          style={{ display: "flex", textDecoration: "none" }}
+        >
+          Search
         </Link>
         <Link to="random" style={{ display: "flex", textDecoration: "none" }}>
           Random
@@ -30,9 +34,6 @@ function Home() {
   );
 }
 
-// const randomFetchUrl =
-//   "https://api.spoonacular.com/recipes/random?apiKey=531bc52fc1d248b88284fd0fd70fa373&number=6";
-
 function App() {
   // const [randomRecipe, setRrandomRecipe] = useState([]);
   // useEffect(() => {
@@ -43,16 +44,21 @@ function App() {
   // }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="recipes" element={<Recipes />} />
-          <Route path="random" element={<Random />} />
-          {/* <Route path="login" element={<Login />} /> */}
-          {/* <Route path="contact" element={<Contact />} /> */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="routes">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route path="recipes">
+              <Route path=":id" element={<RecipeDetail />} />
+              <Route path="search" element={<Search />} />
+            </Route>
+            <Route path="random" element={<Random />} />
+            {/* <Route path="login" element={<Login />} /> */}
+            {/* <Route path="contact" element={<Contact />} /> */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 export default App;

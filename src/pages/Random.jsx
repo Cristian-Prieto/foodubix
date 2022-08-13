@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./Random.module.css";
+import { Link } from "react-router-dom";
 export function Random() {
   const randomFetchUrl =
-    "https://api.spoonacular.com/recipes/random?apiKey=531bc52fc1d248b88284fd0fd70fa373&number=6";
+    "https://api.spoonacular.com/recipes/random?apiKey=125dfba079034731818d6a2a2ce5b955&number=12";
 
   const [randomRecipe, setRrandomRecipe] = useState([]);
   useEffect(() => {
@@ -11,22 +12,21 @@ export function Random() {
       .then((jsonData) => setRrandomRecipe(jsonData.recipes))
       .catch((error) => console.log(error));
   }, []);
-  console.log(randomRecipe);
+
   return (
     <>
-      <div className={styles.sectionContainer}>
-        <h1>Random recipes</h1>
-        {randomRecipe.length > 0 ? (
-          <span className={styles.title}>
-            {randomRecipe.map((item) => (
-              <li key={item.id} className={styles.card}>
-                {item.title}
-                <img className={styles.img} src={item.image} alt="" />
-              </li>
-            ))}
-          </span>
-        ) : null}
-      </div>
+      <h1 style={{ backgroundColor: "green" }}>Random recipes</h1>
+      {randomRecipe.length > 0 ? (
+        <div className={styles.cardContainer}>
+          {randomRecipe.map((item) => (
+            <div key={item.id} className={styles.card}>
+              <Link to={`/recipes/${item.id}`}>{item.title}</Link>
+
+              <img className={styles.img} src={item.image} alt="" />
+            </div>
+          ))}
+        </div>
+      ) : null}
     </>
   );
 }

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-export function Recipes() {
+export function Search() {
   const [searchedFood, setsearchedFood] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const fetchFavouriteUrl = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=531bc52fc1d248b88284fd0fd70fa373&ingredients=${inputValue}&number=20`;
+  const fetchFavouriteUrl = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=125dfba079034731818d6a2a2ce5b955&ingredients=${inputValue}&number=20`;
 
   const filteredFood = (event) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ export function Recipes() {
       </form>
       <ul>
         {searchedFood.map((item) => (
-          <li>{item.title}</li>
+          <li key={item.id}>{item.title}</li>
         ))}
       </ul>
     </>
