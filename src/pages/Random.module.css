@@ -1,0 +1,19 @@
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  background-color: aqua;
+}
+.card {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.title {
+  width: 100%;
+}
+.img {
+  object-fit: cover;
+  width: 100%;
+}
