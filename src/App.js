@@ -14,22 +14,33 @@ function Home() {
         <span style={{ color: "#f1f5f9 " }}>ubix</span>
       </header>
       <nav className="nav-container">
-        <Link to="/" style={{ display: "flex", textDecoration: "none" }}>
+        <Link
+          to="/"
+          style={{
+            color: "#4ade80",
+            textDecoration: "none",
+            borderBottom: "4px solid #4ade80",
+          }}
+        >
           Home
         </Link>
         <Link
           to="recipes/search"
-          style={{ display: "flex", textDecoration: "none" }}
+          style={{ color: "#f1f5f9", display: "flex", textDecoration: "none" }}
         >
           Search
         </Link>
-        <Link to="random" style={{ display: "flex", textDecoration: "none" }}>
+        <Link
+          to="random"
+          style={{ color: "#f1f5f9", display: "flex", textDecoration: "none" }}
+        >
           Random
         </Link>
         {/* <Link to="contact">Contact Us</Link>
         <Link to="login">Login</Link> */}
       </nav>
       <Outlet />
+      <footer className="footer">Cristian Prieto, España 2022</footer>
     </>
   );
 }

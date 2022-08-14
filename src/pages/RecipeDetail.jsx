@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from "./RecipeDetail.module.css";
 export function RecipeDetail() {
   const [recipeInfo, setRecipeInfo] = useState();
   const { id } = useParams();
@@ -9,21 +10,32 @@ export function RecipeDetail() {
     fetch(recipeUrl)
       .then((res) => res.json())
       .then((jsonData) => setRecipeInfo(jsonData));
+    console.log(recipeInfo);
   }, []);
   return (
     <>
       {recipeInfo ? (
-        <div>
-          <span>{recipeInfo.title}</span>
-          <div>
-            <img src={recipeInfo.image} alt=""></img>
+        <div className={styles.container}>
+          <span className={styles.title}>{recipeInfo.title}</span>
+          <div className={styles.imgContainer}>
+            <img className={styles.img} src={recipeInfo.image} alt=""></img>
           </div>
-          <div
+          <ul className={styles.ingredients}>
+            {recipeInfo.extendedIngredients.map((item) => (
+              <li key={item.id}>{item.original}.</li>
+            ))}
+          </ul>
+          {/* <div
+            className={styles.steps}
             dangerouslySetInnerHTML={{ __html: recipeInfo.instructions }}
-            style={{
-              listStyle: "inside",
-            }}
-          />
+          /> */}
+          <div className={styles.instructions}>
+            {recipeInfo.analyzedInstructions[0].steps.map((item) => (
+              <div className={styles.step}>
+                {item.number}. {item.step}
+              </div>
+            ))}
+          </div>
         </div>
       ) : null}
     </>
