@@ -1,12 +1,27 @@
-import { BrowserRouter, Link, Route, Routes, Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import { Random } from "./pages/Random";
 import { RecipeDetail } from "./pages/RecipeDetail";
+
 // import { Login } from "./pages/Login";
 // import { Contact } from "./pages/Contact";
 import { Search } from "./pages/Search";
 
 function Home() {
+  const location = useLocation();
+
+  const isActive = (path) => {
+    if (location.pathname === path) {
+      return "disabled";
+    } else return "enabled";
+  };
   return (
     <>
       <header className="header">
@@ -14,26 +29,13 @@ function Home() {
         <span style={{ color: "#f1f5f9 " }}>ubix</span>
       </header>
       <nav className="nav-container">
-        <Link
-          to="/"
-          style={{
-            color: "#4ade80",
-            textDecoration: "none",
-            borderBottom: "4px solid #4ade80",
-          }}
-        >
+        <Link to="/" className={isActive("/")}>
           Home
         </Link>
-        <Link
-          to="recipes/search"
-          style={{ color: "#f1f5f9", display: "flex", textDecoration: "none" }}
-        >
+        <Link to="recipes/search" className={isActive("/recipes/search")}>
           Search
         </Link>
-        <Link
-          to="random"
-          style={{ color: "#f1f5f9", display: "flex", textDecoration: "none" }}
-        >
+        <Link to="random" className={isActive("/random")}>
           Random
         </Link>
         {/* <Link to="contact">Contact Us</Link>
