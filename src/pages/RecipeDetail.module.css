@@ -25,7 +25,7 @@
   width: 100%;
   border-top: 5px solid;
   border-bottom: 5px solid;
-  border-image: linear-gradient(90deg, #4ade80, #f1f5f9) 1;
+  border-image: linear-gradient(90deg, #4ade80, #f8fafc) 1;
 }
 .ingredients {
   display: flex;
@@ -41,8 +41,8 @@
 
 .instructions {
   text-align: justify;
-  font-size: 1.15rem;
-  padding: 0 12px;
+  font-size: 1.25rem;
+  padding: 0 1rem;
 }
 .step {
   padding-bottom: 1.15rem;
@@ -63,8 +63,8 @@
   .ingredients {
     width: 80%;
     padding: 6rem 0;
-
     font-size: 1.15rem;
+    text-align: left;
     justify-content: center;
     margin: auto;
     gap: 0.5rem;
@@ -85,14 +85,18 @@
 
 @media (min-width: 1024px) {
   .ingredients {
-    justify-content: center;
-    margin: auto;
+    padding: 6rem 0 6rem 4rem;
+    font-size: 1.15rem;
+    width: 50%;
+    text-align: left;
+    gap: 0.5rem;
   }
   .imgContainer {
     width: 80%;
     height: 30rem;
   }
   .img {
+    width: 80%;
   }
 
   .step {
