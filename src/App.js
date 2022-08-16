@@ -7,6 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.css";
+import { Index } from "./components/Index";
 import { Random } from "./pages/Random";
 import { RecipeDetail } from "./pages/RecipeDetail";
 
@@ -23,7 +24,7 @@ function Home() {
     } else return "enabled";
   };
   return (
-    <>
+    <div className="container">
       <header className="header">
         <span style={{ color: "#4ade80 " }}>Food</span>
         <span style={{ color: "#f1f5f9 " }}>ubix</span>
@@ -42,8 +43,9 @@ function Home() {
         <Link to="login">Login</Link> */}
       </nav>
       <Outlet />
+      {location.pathname === "/" ? <Index /> : null}
       <footer className="footer">Cristian Prieto, España 2022</footer>
-    </>
+    </div>
   );
 }
 
