@@ -1,79 +1,23 @@
-import {
-  BrowserRouter,
-  Link,
-  Route,
-  Routes,
-  Outlet,
-  useLocation,
-} from "react-router-dom";
-import "./App.css";
-import { Index } from "./components/Index";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout } from "./components/Layout";
 import { Random } from "./pages/Random";
+import { Index } from "./components/Index";
 import { RecipeDetail } from "./pages/RecipeDetail";
-
-// import { Login } from "./pages/Login";
-// import { Contact } from "./pages/Contact";
 import { Search } from "./pages/Search";
-
-function Home() {
-  const location = useLocation();
-
-  const isActive = (path) => {
-    if (location.pathname === path) {
-      return "disabled";
-    } else return "enabled";
-  };
-  return (
-    <div className="container">
-      <header className="header">
-        <span style={{ color: "#4ade80 " }}>Food</span>
-        <span style={{ color: "#f1f5f9 " }}>ubix</span>
-      </header>
-      <nav className="nav-container">
-        <Link to="/" className={isActive("/")}>
-          Home
-        </Link>
-        <Link to="recipes/search" className={isActive("/recipes/search")}>
-          Search
-        </Link>
-        <Link to="random" className={isActive("/random")}>
-          Random
-        </Link>
-        {/* <Link to="contact">Contact Us</Link>
-        <Link to="login">Login</Link> */}
-      </nav>
-      <Outlet />
-      {location.pathname === "/" ? <Index /> : null}
-      <footer className="footer">Cristian Prieto, España 2022</footer>
-    </div>
-  );
-}
+import "./App.css";
 
 function App() {
-  // const [randomRecipe, setRrandomRecipe] = useState([]);
-  // useEffect(() => {
-  //   fetch(randomFetchUrl)
-  //     .then((res) => res.json())
-  //     .then((jsonData) => setRrandomRecipe(jsonData.recipes))
-  //     .catch((error) => console.log(error));
-  // }, []);
-
   return (
-    <div className="routes">
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="recipes">
-              <Route path=":id" element={<RecipeDetail />} />
-              <Route path="search" element={<Search />} />
-            </Route>
-            <Route path="random" element={<Random />} />
-            {/* <Route path="login" element={<Login />} /> */}
-            {/* <Route path="contact" element={<Contact />} /> */}
-          </Route>
+          <Route path="/" element={<Index />} />
+          <Route path="/recipes/:id" element={<RecipeDetail />} />
+          <Route path="/recipes/search" element={<Search />} />
+          <Route path="/random" element={<Random />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </Layout>
+    </BrowserRouter>
   );
 }
 export default App;

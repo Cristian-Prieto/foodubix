@@ -1,18 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { RecipeList } from "../components/RecipeList";
 import styles from "./Search.module.css";
 
 export function Search() {
   const [searchedFood, setsearchedFood] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const fetchFavouriteUrl = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=a8a50db705674f5e9f467a400ea014f2&ingredients=${inputValue}&number=20`;
+  const fetchFavouriteUrl = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${inputValue}&number=21`;
 
   const filteredFood = (event) => {
     event.preventDefault();
     fetch(fetchFavouriteUrl)
       .then((res) => res.json())
-      .then((jsonData) => setsearchedFood(jsonData));
-    console.log(searchedFood);
+      .then((jsonData) => {
+        console.log({ searchedFood: jsonData });
+        setsearchedFood(jsonData);
+      });
   };
 
   const handleInputValue = (event) => {
@@ -35,15 +37,7 @@ export function Search() {
         </button>
       </form>
 
-      <ul className={styles.list}>
-        {searchedFood.map((item) => (
-          <li className={styles.recipe} key={item.id}>
-            <Link to={`/recipes/${item.id}`} className={styles.linkFood}>
-              <span className={styles.item}>{item.title}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <RecipeList recipes={searchedFood} />
     </>
   );
 }

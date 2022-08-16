@@ -1,0 +1,31 @@
+.inactive {
+  color: #f8fafc;
+  text-decoration: none;
+}
+
+.inactive:hover {
+  color: #4ade80;
+}
+
+.active {
+  text-decoration: none;
+  color: #4ade80;
+  border-bottom: 4px solid #4ade80;
+  pointer-events: none;
+  transition: border 0.2s ease;
+}
+
+.nav-container {
+  font-size: 1.25rem;
+  min-height: 2.5rem;
+  align-items: stretch;
+  padding: 6px 0 0 1rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  position: sticky;
+  gap: 1rem;
+  background-color: #0e1014;
+  z-index: 1;
+}
