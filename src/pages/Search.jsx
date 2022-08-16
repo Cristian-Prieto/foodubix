@@ -34,15 +34,20 @@ export function Search() {
           Search
         </button>
       </form>
-      <ul className={styles.list}>
-        {searchedFood.map((item) => (
-          <li className={styles.recipe} key={item.id}>
-            <Link to={`/recipes/${item.id}`}>
-              <span>{item.title}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {searchedFood < 1 ? (
+        <div className={styles.body}>Are you hungry?</div>
+      ) : (
+        <ul className={styles.list}>
+          Choose your dish
+          {searchedFood.map((item) => (
+            <li className={styles.recipe} key={item.id}>
+              <Link to={`/recipes/${item.id}`}>
+                <span>{item.title}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
