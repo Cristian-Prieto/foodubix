@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 25rem;
+  flex: 1;
   width: 100vw;
   background-image: url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
   background-repeat: no-repeat;
@@ -18,9 +18,26 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 5rem;
+  padding: 5rem 0;
+  width: 100%;
 }
 
 .textLine {
   text-shadow: rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 600px) {
+  .container {
+    font-size: 2rem;
+  }
+  .textContainer {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 5rem;
+    width: auto;
+  }
 }

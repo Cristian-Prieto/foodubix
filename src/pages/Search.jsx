@@ -5,7 +5,7 @@ import styles from "./Search.module.css";
 export function Search() {
   const [searchedFood, setsearchedFood] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const fetchFavouriteUrl = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${inputValue}&number=21`;
+  const fetchFavouriteUrl = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${inputValue}&number=12`;
 
   const filteredFood = (event) => {
     event.preventDefault();

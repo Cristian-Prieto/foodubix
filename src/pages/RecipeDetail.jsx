@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BarLoader from "react-spinners/BarLoader";
 import styles from "./RecipeDetail.module.css";
 
 export function RecipeDetail() {
   const [recipeInfo, setRecipeInfo] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
     const recipeUrl = `https://api.spoonacular.com/recipes/${id}/information/?apiKey=${process.env.REACT_APP_API_KEY}`;
     fetch(recipeUrl)
-      .then((res) => res.json())
+      .then((res) => res.json(), setIsLoading(true))
       .then((jsonData) => {
         setRecipeInfo(jsonData);
         setIsLoading(false);
@@ -19,7 +20,7 @@ export function RecipeDetail() {
   }, [id]);
 
   if (isLoading) {
-    return `Loading Details for Recipe ID: #${id}...`;
+    return <BarLoader color="#44f1a1" />;
   }
 
   return (

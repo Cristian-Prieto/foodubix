@@ -7,5 +7,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+}
+
+.link {
+  font-weight: 600;
+  padding-left: 1rem;
+  text-decoration: none;
+  color: #4ade80;
+}
+.link:link {
+  color: #4ade80;
 }
