@@ -6,6 +6,10 @@
 
 # Foodubix
 
+![](https://img.shields.io/netlify/1139535a-fa38-47ca-98bc-f3805ca233d3)
+
+[Go to site](https://cubix-foodubix.netlify.app)
+
 This React project uses spoonacular API to find the dish you want to eat. You can look for recipes by ingredients or use random search.
 
 ## Authors
